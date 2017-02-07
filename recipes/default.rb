@@ -20,7 +20,7 @@ end
 node['siem']['config_files'].each do |cfg|
   execute "siem_create_backup" do
     command "cp -pR #{cfg} #{cfg}.`date '+%d%b%Y__%H%M'`"
-    only_if { ::File.exists?(cfg) }
+    only_if { ::File.exist?(cfg) }
   end
   
   # Download site-specific configuration
